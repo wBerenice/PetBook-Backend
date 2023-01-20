@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `Petbook`.`publicaciones` (
   `id_publicacion` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(140) NOT NULL,
-  `foto` VARCHAR(4005) NULL,
+  `foto` TEXT NULL,
   `likes` INT NULL,
   `usuarios_idusuarios` INT NOT NULL,
   PRIMARY KEY (`id_publicacion`, `usuarios_idusuarios`),
