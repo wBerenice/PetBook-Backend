@@ -1,5 +1,9 @@
 package com.petbook.backendPetbook.service;
 
-public interface UsuariosRepository extends PublicacionesRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.petbook.backendPetbook.models.Usuarios;
+
+public interface UsuariosRepository extends JpaRepository<Usuarios,Long> {
 
 }
