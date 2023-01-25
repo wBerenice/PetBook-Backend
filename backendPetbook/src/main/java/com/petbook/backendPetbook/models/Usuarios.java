@@ -17,9 +17,13 @@ public class Usuarios {
 	private Long id;
 	@Column (nullable =false)
 	private String nombre;
+	@Column (nullable =false)
 	private String correo;
+	@Column (nullable =false)
 	private String especie;
+	@Column (nullable =false)
 	private Long telefono;
+	@Column (nullable =false)
 	private String contrasena;
 	
 	public Usuarios(Long id, String nombre, String correo, String especie, Long telefono, String contrasena) {
@@ -34,10 +38,6 @@ public class Usuarios {
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNombre() {
