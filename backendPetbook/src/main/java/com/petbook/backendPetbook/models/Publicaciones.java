@@ -5,8 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 
@@ -22,13 +21,10 @@ public class Publicaciones {
 private String titulo;
 private String descripcion;
 private String foto;
-private int  likes;
+private Integer  likes;
+private String usuario;
 
-@ManyToOne
-@JoinColumn(name = "Id_usuario")
-private Usuarios usuario;
-
-public Publicaciones(Long id, String titulo, String descripcion, String foto, int likes, Usuarios usuario) {
+public Publicaciones(Long id, String titulo, String descripcion, String foto, Integer likes, String usuario) {
 	super();
 	this.id = id;
 	this.titulo = titulo;
@@ -59,13 +55,13 @@ public void setFoto(String foto) {
 public int getLikes() {
 	return likes;
 }
-public void setLikes(int likes) {
+public void setLikes(Integer likes) {
 	this.likes = likes;
 }
-public Usuarios getUsuario() {
+public String getUsuario() {
 	return usuario;
 }
-public void setUsuario(Usuarios usuario) {
+public void setUsuario(String usuario) {
 	this.usuario = usuario;
 }
 public Long getId() {
