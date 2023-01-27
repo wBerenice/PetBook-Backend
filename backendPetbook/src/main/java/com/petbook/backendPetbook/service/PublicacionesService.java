@@ -32,15 +32,14 @@ return 	publicacionesRepository.save(publicacion);
 	
 }//PostPublicaciones
 
-public Publicaciones updatePublicacion(Long id, String titulo, String descripcion, String foto, Integer likes, String usuario) {
+public Publicaciones updatePublicacion(Long id, String titulo, String descripcion, String foto, Long id_usuario) {
 	Publicaciones tmp=null;
 if(	publicacionesRepository.existsById(id)) {
 	tmp=publicacionesRepository.findById(id).get();
 	if(titulo!=null) tmp.setTitulo(titulo);
 	if(descripcion!=null) tmp.setDescripcion(descripcion);
 	if(foto!=null) tmp.setFoto(foto);
-	if(likes!=null) tmp.setLikes(likes);
-	if(usuario!=null) tmp.setUsuario(usuario);
+	if(id_usuario!=null) tmp.setId_usuario(id_usuario);
 	publicacionesRepository.save(tmp);
 	
 }//if

@@ -49,9 +49,8 @@ public Publicaciones updatePublicacion(@PathVariable("publiId") Long id,
 		@RequestParam(required = false) String titulo,
 		@RequestParam(required=false) String descripcion,
 		@RequestParam(required=false) String foto,
-		@RequestParam(required=false) Integer likes,
-		@RequestParam(required=false) String usuario){
-	return publicacionesService.updatePublicacion(id, titulo, descripcion, foto, likes, usuario);
+		@RequestParam(required=false) Long id_usuario){
+	return publicacionesService.updatePublicacion(id, titulo, descripcion, foto, id_usuario);
 }//put
 }//publicaciones controller
 		

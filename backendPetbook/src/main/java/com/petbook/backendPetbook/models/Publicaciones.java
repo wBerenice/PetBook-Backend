@@ -21,17 +21,15 @@ public class Publicaciones {
 private String titulo;
 private String descripcion;
 private String foto;
-private Integer  likes;
-private String usuario;
+private Long id_usuario;
 
-public Publicaciones(Long id, String titulo, String descripcion, String foto, Integer likes, String usuario) {
+public Publicaciones(Long id, String titulo, String descripcion, String foto,  Long id_usuario) {
 	super();
 	this.id = id;
 	this.titulo = titulo;
 	this.descripcion = descripcion;
 	this.foto = foto;
-	this.likes = likes;
-	this.usuario = usuario;
+	this.id_usuario = id_usuario;
 }//Constructor 
 public Publicaciones  () {} //constructor sin parámetros
 public String getTitulo() {
@@ -52,17 +50,14 @@ public String getFoto() {
 public void setFoto(String foto) {
 	this.foto = foto;
 }
-public int getLikes() {
-	return likes;
+
+
+
+public Long getId_usuario() {
+	return id_usuario;
 }
-public void setLikes(Integer likes) {
-	this.likes = likes;
-}
-public String getUsuario() {
-	return usuario;
-}
-public void setUsuario(String usuario) {
-	this.usuario = usuario;
+public void setId_usuario(Long id_usuario) {
+	this.id_usuario = id_usuario;
 }
 public Long getId() {
 	return id;
@@ -70,6 +65,7 @@ public Long getId() {
 @Override
 public String toString() {
 	return "Publicaciones [id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", foto=" + foto
-			+ ", likes=" + likes + ", usuario=" + usuario + "]";
+			+ ", id_usuario=" + id_usuario + "]";
 }
+
 }//Class Publicaciones
