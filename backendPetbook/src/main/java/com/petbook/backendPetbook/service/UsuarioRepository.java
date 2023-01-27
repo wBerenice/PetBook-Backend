@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.petbook.backendPetbook.models.Usuarios;
 
-public interface UsuariosRepository extends JpaRepository<Usuarios,Long> {
+public interface UsuarioRepository extends JpaRepository<Usuarios, Long>{
 
 }
