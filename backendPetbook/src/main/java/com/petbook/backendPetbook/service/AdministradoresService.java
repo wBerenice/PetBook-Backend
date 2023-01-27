@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.petbook.backendPetbook.models.Administradores;
-import com.petbook.backendPetbook.models.Publicaciones;
 
 
 
