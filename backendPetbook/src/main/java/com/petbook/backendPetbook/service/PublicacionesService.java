@@ -45,7 +45,7 @@ if(	publicacionesRepository.existsById(id)) {
 	
 }//if
 else {
-	System.out.println("Update - El producto con el id " + id + "no existe");
+	System.out.println("Update - La publicación con el id " + id + "no existe");
 }
 return tmp;
 }//updatePublicaciones

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.petbook.backendPetbook.models.Administradores;
+import com.petbook.backendPetbook.models.Publicaciones;
 
 
 
@@ -40,5 +41,20 @@ public class AdministradoresService {
     	else {System.out.println("El administrador con el id: " + id + "no existe");
     	}
     	return tmp;
-    }
+    }//update administrador
+    
+    public Administradores deleteAdministrador (Long id) {
+    	Administradores tmp = null;
+    	if(	administradorRepository.existsById(id)) {
+    		tmp=administradorRepository.findById(id).get();
+    		administradorRepository.deleteById(id);
+    	}//if
+    	return tmp;	
+    	}//deleteAdministradores
+    
+    public Administradores addAdministrador(Administradores  administrador) {
+    	return 	administradorRepository.save(administrador);
+    		
+    	}//PostAdministradores
+    
 }
