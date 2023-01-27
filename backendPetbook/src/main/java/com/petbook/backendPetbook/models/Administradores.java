@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "administradores")
 public class Administradores {
 	
-	public class administradores{
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name = "id", unique = true, nullable = false)
@@ -22,12 +21,12 @@ public class Administradores {
 		private String contrasena;
 		
 		
-		public administradores() {
+		public Administradores() {
 			// TODO Auto-generated constructor stub
 		}
 
 
-		public administradores(Long id, String nombre, String contrasena) {
+		public Administradores(Long id, String nombre, String contrasena) {
 			super();
 			this.id = id;
 			this.nombre = nombre;
@@ -60,7 +59,6 @@ public class Administradores {
 		}
 		
 	
-	}//class Administradores
 
 
 
