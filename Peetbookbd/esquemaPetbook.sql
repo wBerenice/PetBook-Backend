@@ -5,24 +5,24 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema Petbook
+-- Schema Petbookbd
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema Petbook
+-- Schema Petbookbd
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Petbook` DEFAULT CHARACTER SET utf8 ;
-USE `Petbook` ;
+CREATE SCHEMA IF NOT EXISTS `Petbookbd` DEFAULT CHARACTER SET utf8 ;
+USE `Petbookbd` ;
 
 -- -----------------------------------------------------
--- Table `Petbook`.`usuarios`
+-- Table `Petbookbd`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Petbook`.`usuarios` (
+CREATE TABLE IF NOT EXISTS `Petbookbd`.`usuarios` (
   `idusuarios` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
   `especie` VARCHAR(45) NOT NULL,
-  `telefono` VARCHAR(15) NOT NULL,
+  `telefono` VARCHAR(45) NOT NULL,
   `contraseña` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idusuarios`),
   UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) VISIBLE)
@@ -30,9 +30,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Petbook`.`publicaciones`
+-- Table `Petbookbd`.`publicaciones`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Petbook`.`publicaciones` (
+CREATE TABLE IF NOT EXISTS `Petbookbd`.`publicaciones` (
   `id_publicacion` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(140) NOT NULL,
@@ -40,23 +40,14 @@ CREATE TABLE IF NOT EXISTS `Petbook`.`publicaciones` (
   `likes` INT NULL,
   `usuarios_idusuarios` INT NOT NULL,
   PRIMARY KEY (`id_publicacion`, `usuarios_idusuarios`),
-  INDEX `fk_publicaciones_usuarios_idx` (`usuarios_idusuarios` ASC) VISIBLE)
+  INDEX `fk_publicaciones_usuarios1_idx` (`usuarios_idusuarios` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Petbook`.`blog`
+-- Table `Petbookbd`.`administradores`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Petbook`.`blog` (
-  `usuarios_idusuarios` INT NOT NULL,
-  PRIMARY KEY (`usuarios_idusuarios`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `Petbook`.`administradores`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Petbook`.`administradores` (
+CREATE TABLE IF NOT EXISTS `Petbookbd`.`administradores` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `contraseña` VARCHAR(45) NOT NULL,
@@ -65,18 +56,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Petbook`.`publicaciones_blog`
+-- Table `Petbookbd`.`likes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Petbook`.`publicaciones_blog` (
-  `id_blog` INT NOT NULL AUTO_INCREMENT,
-  `informacion` VARCHAR(1000) NOT NULL,
-  `Fecha_actualizacion` DATE NOT NULL,
-  `autores` VARCHAR(100) NOT NULL,
-  `blog_usuarios_idusuarios` INT NOT NULL,
-  `administradores_id` INT NOT NULL,
-  PRIMARY KEY (`id_blog`, `blog_usuarios_idusuarios`, `administradores_id`),
-  INDEX `fk_publicaciones_blog_blog1_idx` (`blog_usuarios_idusuarios` ASC) VISIBLE,
-  INDEX `fk_publicaciones_blog_administradores1_idx` (`administradores_id` ASC) VISIBLE)
+CREATE TABLE IF NOT EXISTS `Petbookbd`.`likes` (
+  `likes` INT NOT NULL AUTO_INCREMENT,
+  `publicaciones_id_publicacion` INT NOT NULL,
+  `usuarios_idusuarios` INT NOT NULL,
+  PRIMARY KEY (`likes`, `usuarios_idusuarios`),
+  INDEX `fk_likes_publicaciones_idx` (`publicaciones_id_publicacion` ASC) VISIBLE,
+  INDEX `fk_likes_usuarios1_idx` (`usuarios_idusuarios` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
