@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.petbook.backendPetbook.models.Likes;
 
 @Service
-public class likesService {
-	private final likesRepository likesRepository;
+public class LikesService {
+	private final LikesRepository likesRepository;
 	@Autowired
-	public likesService(com.petbook.backendPetbook.service.likesRepository likesRepository) {
+	public LikesService(LikesRepository likesRepository) {
 		super();
 		this.likesRepository = likesRepository;
 	}//constructor

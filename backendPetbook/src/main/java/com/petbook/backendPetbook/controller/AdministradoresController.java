@@ -18,7 +18,7 @@ package com.petbook.backendPetbook.controller;
 
 
 	@RestController
-	@RequestMapping(path = "api/administradores/")  //http://localhost:8080/api/administradores/
+	@RequestMapping(path = "/api/administradores/")  //http://localhost:8080/api/administradores/
 	public class AdministradoresController {
 		
 		private final AdministradoresService administradoresService;//constante
