@@ -26,16 +26,16 @@ private final UsuarioService usuarioService;
 		this.usuarioService = usuarioService;
 	}//constructor
 	
-	@GetMapping//http://localhost:8080/api/productos/
+	@GetMapping//http://localhost:8080/api/usuarios/
 	public List<Usuarios> getAllProductos(){
 		return usuarioService.getAllUsuarios();
 	}//getAllProductos
 	
-	@GetMapping(path="{prodId}")//http://localhost:8080/api/productos/1
+	@GetMapping(path="{prodId}")//http://localhost:8080/api/usuarios/1
 	public Usuarios getUsuarios(@PathVariable("prodId")Long id){
 		return usuarioService.getUsuario(id);
 	}//getProducto
-	@DeleteMapping(path="{prodId}")//http://localhost:8080/api/productos/1
+	@DeleteMapping(path="{prodId}")//http://localhost:8080/api/usuarios/1
 	public Usuarios deleteUsuario(@PathVariable("prodId")Long id){
 		return usuarioService.deleteUsuarios(id);
 	}//deleteProducto
@@ -44,7 +44,7 @@ private final UsuarioService usuarioService;
 		 return usuarioService.addUsuarios(usuario);
 	 }//addProducto
 	 
-	@PutMapping (path="{prodId}")//http://localhost:8080/api/productos/1
+	@PutMapping (path="{prodId}")//http://localhost:8080/api/usuarios/1
 	public Usuarios updateUsuarios(@PathVariable("prodId")Long id,
     @RequestParam(required= false) String nombre,
 	@RequestParam(required = false) String correo,

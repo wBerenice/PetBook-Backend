@@ -25,17 +25,17 @@ public class PublicacionesController {
 		super();
 		this.publicacionesService = publicacionesService;
 	}//Constructor
-	@GetMapping
+	@GetMapping					//http://localhost:8080/api/publicaciones/
 	public List<Publicaciones> getAllPublicaciones(){
 		return publicacionesService.getAllPublicaciones();
 	}//getAllPublicaciones
 	
-	@GetMapping(path="{publiId}")
+	@GetMapping(path="{publiId}") //http://localhost:8080/api/publicaciones/1
 	public Publicaciones getPublicaciones(@PathVariable("publiId") Long id ) {
 		return publicacionesService.getPublicacion(id);
 	}// Get id
 	
-	@DeleteMapping(path="{publiId}")
+	@DeleteMapping(path="{publiId}") //http://localhost:8080/api/publicaciones/1
 	public Publicaciones deletePublicaciones(@PathVariable ("publiId") Long id) {
 		return publicacionesService.deletePublicacion(id);
 	}//deltePublicacion
@@ -44,14 +44,14 @@ public class PublicacionesController {
 		return publicacionesService.addPublicacion(publicacion);}//post
 	
 
-@PutMapping (path="{publiId}")
-public Publicaciones updatePublicacion(@PathVariable("publiId") Long id,
+	@PutMapping (path="{publiId}")   //http://localhost:8080/api/publicaciones/1
+	public Publicaciones updatePublicacion(@PathVariable("publiId") Long id,
 		@RequestParam(required = false) String titulo,
 		@RequestParam(required=false) String descripcion,
 		@RequestParam(required=false) String foto,
 		@RequestParam(required=false) Long id_usuario){
 	return publicacionesService.updatePublicacion(id, titulo, descripcion, foto, id_usuario);
-}//put
+	}//put
 }//publicaciones controller
 		
 		

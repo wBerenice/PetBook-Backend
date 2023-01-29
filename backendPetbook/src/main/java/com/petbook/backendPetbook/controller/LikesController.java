@@ -16,17 +16,17 @@ public class LikesController {
         this.likesService = likesService;
     }//constructor
 
-    @GetMapping
+    @GetMapping 		//http://localhost:8080/api/likes/
     public List<Likes> getAllLikes(){
         return likesService.getAllLikes();
     }//getAll
 
-    @GetMapping(path="{likeId}")
+    @GetMapping(path="{likeId}") //http://localhost:8080/api/likes/1
     public Likes getLike(@PathVariable("likeId") Long id){
         return likesService.getLikes(id);
     }//getLike
 
-    @DeleteMapping(path="{likeId}")
+    @DeleteMapping(path="{likeId}")  //http://localhost:8080/api/likes/1
     public Likes deleteLike(@PathVariable("likeId") Long id){
         return likesService.deleteLikes(id);
     }//deleteLike
@@ -36,7 +36,7 @@ public class LikesController {
         return likesService.addLikes(likes);
     }//addLikes
 
-    @PutMapping(path="{likeId}")
+    @PutMapping(path="{likeId}") //http://localhost:8080/api/likes/1
     public Likes updateLike(@PathVariable("likeId") Long id,
                             Long id_usuario,
                             Long id_publicaciones){
