@@ -1,0 +1,117 @@
+
+body{
+  overflow-x: hidden;
+  font-family: var(--font-nunito);
+}
+
+.espaciado{
+  padding-bottom: 1rem;
+}
+
+.texto-acerca-nosotros h1{
+  font-weight: 600;
+}
+
+.container{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.btn-color{
+  background-color: var(--amarillo-base);
+}
+
+
+.img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    margin: 0px auto;
+    border-radius: 5px;
+  }
+  
+  .card{
+    width: 15rem;
+    height: fit-content;
+    border: 2px solid var(--amarillo-base);
+    box-shadow: 8px 10px 12px -5px rgb(0 0 0 / .4);
+  }
+
+  .col{
+    padding: 0;
+  }
+  .gap{
+    gap:10px;
+  }
+  @keyframes pata{ 
+    from{
+        opacity: 1;
+ }
+ to{
+        opacity: 0;
+ }
+}
+.patita{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    float: right;
+    animation-name: pata;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes pata{ 
+  from{
+      opacity: 1;
+}
+to{
+      opacity: 0;
+}
+}
+.patita2{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  float: left;
+  animation-name: pata;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@media((max-width: 990px) and (min-width: 768px)){
+  .col{
+    margin-right: 10px;
+  }
+}
+
+.cards_nosotros_container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.card_nosotros{
+  border: 2px solid var(--amarillo-base);
+  padding: 1.25rem;
+  border-radius: 5px;
+}
+
+.card_nosotros_title{
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  display: block;
+ 
+  padding: 10px 0;
+  border-bottom: 2px solid var(--amarillo-base);
+
+}
+
+.card_nosotros_text{
+  font-size: 1rem;
+  line-height: 1.2;
+}

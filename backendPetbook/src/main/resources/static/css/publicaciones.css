@@ -1,0 +1,75 @@
+
+
+.btn-color{
+  background-color: var(--amarillo-base);
+}
+
+
+.card{
+  max-width: 25.75rem;
+  width: 100%;
+  padding: 0;
+  margin: 1.25rem 0;
+  background-color: var(--amarillo-palido);
+  font-family: var(--font-nunito); 
+  box-shadow: 0 1px 1px rgb(0, 0, 0);
+  cursor: default;
+  transition: all 400ms ease;
+}
+.card:hover{
+box-shadow: 5px 5px 20px rgb(0, 0, 0.45);
+transform: translateY(-3%);
+}
+
+.btn-outline-secondary{
+  background-color: var(--amarillo-base);
+  border: 1px solid var(--gris-oscuro);
+  color: var(--gris-oscuro);
+  margin-bottom: 1rem;
+}
+.btn-outline-secondary:hover{
+  background-color: var(--amarillo-base);
+  color: var(--blanco);
+  font-weight: 600;
+}
+
+.img{
+  width: 100%;
+}
+
+.card-title{
+  font-size: 1.5rem;
+}
+
+
+.row{
+  margin-bottom: 20px;
+}
+#tmpimagen{
+  max-width: 400px;
+}
+#croquetita{
+  max-width: 40px;
+}
+#usuario{
+  font-size: small;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: left;
+}
+#btnLike{
+  background-image:url('/images/croquetita.png');
+  background-repeat:no-repeat;
+  height:40px;
+  width:40px;
+  background-size: 30px 30px;
+  background-position:center;
+  border: 0ch;
+  border-radius: 100%;
+  
+}
+#descripcionTexto{
+  text-align: left;
+  font-size: large;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
