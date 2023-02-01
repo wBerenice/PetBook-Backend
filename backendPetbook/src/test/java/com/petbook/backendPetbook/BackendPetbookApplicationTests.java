@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.petbook.backendPetbook.models.Administradores;
 import com.petbook.backendPetbook.models.Publicaciones;
+import com.petbook.backendPetbook.models.Usuarios;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -130,4 +131,57 @@ public void pruebaUPDATE2() throws Exception{
 	.andExpect(status().isOk() )
 	.andExpect(content().string(containsString("Horus")));
 }//UpdatePublicaciones
+
+
+//pruebasUsuarios
+@Test
+@DisplayName ("Prueba el método POST en usuarios")
+public void pruebaPostU() throws Exception {
+	Usuarios u = new Usuarios ();
+	u.setNombre("chilaquil");
+	u.setCorreo("chilaquil@gmail.com");
+	u.setEspecie("perro");
+	u.setTelefono(null);
+	u.setContrasena("chilaquil1234");
+
+	this.mockMvc.perform(post("/api/usuarios/")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content (asJsonString(u))
+			)
+	.andDo(print() )
+	.andExpect(status().isOk())
+	.andExpect(content().string(containsString("Copito") ) );	
+}//pruebaPost
+
+@Test //
+@DisplayName("Prueba el método GET de usuarios")
+
+public void pruebaGetU() throws Exception {
+	this.mockMvc.perform(  get("/api/usuarios/") )
+	.andDo(print() )
+	.andExpect(status().isOk() );
+	
+}//pruebaGetusuarios
+
+@Test
+@DisplayName("Prueba del método delete en Usuarios")
+
+public void pruebaDeleteU() throws Exception{
+	this.mockMvc.perform(  delete("/api/usuarios/2") )
+	.andDo(print() )
+	.andExpect(status().isOk() );
+		
+}//PruebaDeleteusuarios
+
+@Test
+@DisplayName("Prueba el método UPDATE en administradores")
+
+public void pruebaUpdateU() throws Exception{
+	this.mockMvc.perform(  put("/api/usuarios/1").queryParam("contrasena", "COPITO12345") )
+	.andDo(print() )
+	.andExpect(status().isOk() )
+	.andExpect(content().string(containsString("chilaquil")));
+}//UpdateUsuarios
+
+
 }//Class

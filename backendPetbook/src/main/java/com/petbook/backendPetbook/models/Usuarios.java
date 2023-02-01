@@ -35,7 +35,9 @@ public class Usuarios {
 		this.telefono = telefono;
 		this.contrasena = contrasena;
 	}
-
+	public Usuarios () {
+		
+	}
 	public Long getId() {
 		return id;
 	}
