@@ -111,6 +111,7 @@ btnRegistro.addEventListener("click", function (event) {
   modalSuccess.showModal();
 
   delayLogin(SEG_TO_LOGIN);
+  realizarFetchDePost();
 }); //Event.Listener.btnRegistro - TERMINA
 
 //FUNCIONES LOCALSTORAGE
@@ -156,3 +157,22 @@ let btnTengoCuenta = document.getElementById("btnTengoCuenta");
 btnTengoCuenta.addEventListener("click", () => {
   window.location.href = "login.html";
 });
+
+//fecht:post
+async function realizarFetchDePost() {
+  const data = {
+	 datos:inputs.value
+    
+  };
+  const response = await fetch("http://localhost:8080/api/index/", {
+    method: "POST",
+    headers: {
+     "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  const post = await response.json();
+  index.push(post);
+}
+
