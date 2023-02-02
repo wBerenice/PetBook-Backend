@@ -123,7 +123,7 @@ btnEnviar.addEventListener("click", function (event) {
     addItem(base64Img, txtNombre.value, txtDescripcion.value);
     setLocal(publicaciones);
     renderItems(publicaciones);
-
+ realizarFetchDePost();
     //Limpia los campos nombres y descripción
     txtNombre.value = "";
     txtDescripcion.value = "";
@@ -131,7 +131,7 @@ btnEnviar.addEventListener("click", function (event) {
     tmpimagen.src = "";
 base64Img = "";
     txtNombre.focus();
-    
+   
   }
   //    let inputFocused="";
   //  let elements = document.querySelectorAll("input[type='text'], input[type='password']");
@@ -281,3 +281,43 @@ document.addEventListener("click", function(e){
     document.querySelector(`[data-id="${cardId}"] + span`).innerHTML = `<p>a <b>${counters[cardId]}</b> mascotas les hace mover la colita</p>` ;
   }
 });
+
+async function realizarFetchDePost() {
+  const data = {
+	  descripcion: txtDescripcion.value,
+    titulo: txtNombre.value,
+    foto: base64Img
+  };
+  const response = await fetch("http://localhost:8080/api/publicaciones/", {
+    method: "POST",
+    headers: {
+     "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  const post = await response.json();
+  publicaciones.push(post);
+}
+
+ //const data =     { descripcion: txtDescripcion.value,
+  //          titulo: txtNombre.value  ,
+    //      foto: base64Img
+ //};
+
+// fetch("http://localhost:8080/api/publicaciones/", {
+ //  method: 'POST', // or 'PUT'
+   //headers: {
+     //'Content-Type': 'application/json',
+   //},
+  // body: JSON.stringify(data),
+ //})
+ //.then(response => response.json())
+ //.then(data => {
+  // console.log('Success:', data);
+ //})
+ //.catch((error) => {
+ //  console.error('Error:', error);
+ //});
+
+

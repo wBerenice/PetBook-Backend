@@ -1,5 +1,6 @@
 package com.petbook.backendPetbook.models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public void setDescripcion(String descripcion) {
 }
 public String getFoto() {
 	return foto;
-}
+} 
 public void setFoto(String foto) {
 	this.foto = foto;
 }

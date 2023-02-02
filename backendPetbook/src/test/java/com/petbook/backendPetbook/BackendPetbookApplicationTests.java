@@ -52,7 +52,7 @@ public void pruebaPOST() throws Exception {
 	Publicaciones p = new Publicaciones();
 	p.setTitulo("Copito");
 	p.setDescripcion("Copito esta bien bonito");
-	p.setFoto("copito_7.jpg");
+	//p.setFoto("copito_7.jpg");
 	p.setId_usuario((long) 1);
 	
 	this.mockMvc.perform(  post("/api/publicaciones/")
