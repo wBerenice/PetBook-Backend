@@ -167,9 +167,10 @@ function setLocal(arr) {
 }
 
 function renderItems(items) {
+  console.log("prueba")
   itemsContainer.innerHTML = "";
 
-  publicaciones.forEach((item) =>
+  items.forEach((item) =>
     itemsContainer.insertAdjacentHTML("afterbegin", chooseRender(item))
   );
 }
@@ -217,10 +218,11 @@ function obtenerLocalStorage() {
 }
 
 window.addEventListener("load", () => {
-  obtenerLocalStorage();
+  // obtenerLocalStorage();
+  console.log("load")
   realizarFetchDeGet();//peticion GET
-
-  // renderItems(publicaciones);
+  renderItems(publicaciones);
+  
 });
 
 //borrar los datos de inicio de sesion al momento de cerrarla
@@ -340,8 +342,11 @@ async function realizarFetchDeGet() {
   console.log(response);
 
   const getPublicaciones = await response.json();
-  renderItems(getPublicaciones);
-  console.log(getPublicaciones);
+  publicaciones = getPublicaciones;
+
+
+  console.log(publicaciones);
+  return 
 }
 
 
