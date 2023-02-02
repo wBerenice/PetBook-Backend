@@ -180,13 +180,13 @@ function chooseRender(item) {
   const markupImg = `
   <div class="row justify-content-center">
     <div class="card card-img" >
-      <img src="${item.img}" class="card-img-top img" alt="${item.description}">
+      <img src="${item.foto}" class="card-img-top img" alt="${item.descripcion}">
       <div class="card-body">
       <button type="button" class="btn btn-outline-secondary btn-like" id="btnLike" value="1" data-counter  data-id="${itemId}" ></button>
       <span id = "likes">
       </span>
-        <h4 class="card-title text-center">${item.name}</h4>
-        <p class="card-text " id = "descripcionTexto">${item.description}</p>
+        <h4 class="card-title text-center">${item.titulo}</h4>
+        <p class="card-text " id = "descripcionTexto">${item.descripcion}</p>
         <p class="card-text " id = "usuario"> publicado por: <b>${usuario}</b><p>
 
       </div>
@@ -199,8 +199,8 @@ function chooseRender(item) {
   <div class="row justify-content-center">
     <div class="card card-text" >
       <div class="card-body">
-        <h5 class="card-title text-center">${item.name}</h5>
-        <p class="card-text " id ="descripcionTexto">${item.description}</p>
+        <h5 class="card-title text-center">${item.titulo}</h5>
+        <p class="card-text " id ="descripcionTexto">${item.descripcion}</p>
         <p class="card-text " id = "usuario"> publicado por: <b>${usuario}</b><p>
       </div>
     </div>
@@ -343,7 +343,7 @@ async function realizarFetchDeGet() {
 
   const getPublicaciones = await response.json();
   publicaciones = getPublicaciones;
-
+renderItems(publicaciones);
 
   console.log(publicaciones);
   return 
