@@ -112,18 +112,20 @@ function temporizador() {
 }
 
 //EVENTO===============================================================================
+
 btnEnviar.addEventListener("click", function (event) {
   event.preventDefault();
-  alertaValidaciones.innerHTML = ""; //separacion entre los alerts y las cards
 
-  if (validarNombre() == true && validarDescripcion() == true) {
+  alertaValidaciones.innerHTML = ""; //separacion entre los alerts y las cards
+  	if (validarNombre() == true && validarDescripcion() == true) {
     quitarAlertas();
     temporizador();
 
-    addItem(base64Img, txtNombre.value, txtDescripcion.value);
-    setLocal(publicaciones);
-    renderItems(publicaciones);
- realizarFetchDePost();
+    // addItem(base64Img, txtNombre.value, txtDescripcion.value);
+    // setLocal(publicaciones);
+
+    // renderItems(publicaciones);
+    realizarFetchDePost();
     //Limpia los campos nombres y descripción
     txtNombre.value = "";
     txtDescripcion.value = "";
@@ -141,7 +143,7 @@ base64Img = "";
   //      inputFocused.value="";
   //   });
   // }
-});
+});//btnEnviar - Fin
 txtNombre.addEventListener("blur", function (event) {
   event.preventDefault();
   event.target.value = event.target.value.trim();
@@ -216,7 +218,9 @@ function obtenerLocalStorage() {
 
 window.addEventListener("load", () => {
   obtenerLocalStorage();
-  renderItems(publicaciones);
+  realizarFetchDeGet();//peticion GET
+
+  // renderItems(publicaciones);
 });
 
 //borrar los datos de inicio de sesion al momento de cerrarla
@@ -319,5 +323,25 @@ async function realizarFetchDePost() {
  //.catch((error) => {
  //  console.error('Error:', error);
  //});
+ 
+ 
+ //FETCH para GET publicaciones y renderizar en la página
+
+async function realizarFetchDeGet() {
+  const response = await fetch("http://localhost:8080/api/publicaciones/",{
+    
+      method: "GET",
+      headers: {
+      "Content-Type": "application/json"
+      },
+    }
+  );
+
+  console.log(response);
+
+  const getPublicaciones = await response.json();
+  renderItems(getPublicaciones);
+  console.log(getPublicaciones);
+}
 
 
