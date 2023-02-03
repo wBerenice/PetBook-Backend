@@ -26,32 +26,12 @@ let nombreRegex = /^[a-zA-Z0-9A-ZÁÉÍÓÚ a-zñáéíóú(?¿:.*[@$¡!^\-_)]{2
 //Este REGEX ya incluye el mínimo de caracteres 10 y el máximo es indeterminado
 let descriptionRegex = /^[a-zA-Z0-9A-ZÁÉÍÓÚ a-zñáéíóú(?¿:.*[@$¡!^\-_)]{10,}$/; //No acepta corchetes []
 
-const input = document.getElementById("inputImg");
+
 const tmpimagen = document.getElementById("tmpimagen");
 const textArea = document.getElementById("textArea");
-const convertBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
 
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
 
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-};
-const uploadImage = async (event) => {
-  const file = event.target.files[0];
-  base64Img = await convertBase64(file);
-  tmpimagen.src = base64Img;
-};
 
-input.addEventListener("change", (e) => {
-  uploadImage(e);
-});
 
 function validarNombre() {
   //LISTO NOMBRE
@@ -121,18 +101,20 @@ btnEnviar.addEventListener("click", function (event) {
     quitarAlertas();
     temporizador();
 
-    // addItem(base64Img, txtNombre.value, txtDescripcion.value);
     // setLocal(publicaciones);
 
-    // renderItems(publicaciones);
+   
     realizarFetchDePost();
     //Limpia los campos nombres y descripción
     txtNombre.value = "";
     txtDescripcion.value = "";
-    input.value = "";
+  
     tmpimagen.src = "";
 base64Img = "";
+imageUrl="";
+
     txtNombre.focus();
+    
    
   }
   //    let inputFocused="";
@@ -154,12 +136,11 @@ txtDescripcion.addEventListener("blur", function (event) {
 });
 
 function addItem( urlImg, name, description) {
-  publicaciones.push({
-    img: urlImg,
-    name: name,
-    description: description,
-  });
-  console.log(publicaciones);
+ return{
+    foto: urlImg,
+    titulo: name,
+    descripcion: description,
+  }
 }
 
 function setLocal(arr) {
@@ -207,7 +188,7 @@ function chooseRender(item) {
     </div>
     `;
     
-  return item.img ? markupImg : markupText;
+  return item.foto ? markupImg : markupText;
   
 }
 
@@ -292,7 +273,7 @@ async function realizarFetchDePost() {
   const data = {
 	  descripcion: txtDescripcion.value,
     titulo: txtNombre.value,
-    foto: base64Img
+    foto: imageUrl
   };
   const response = await fetch("http://localhost:8080/api/publicaciones/", {
     method: "POST",
@@ -303,7 +284,7 @@ async function realizarFetchDePost() {
   });
 
   const post = await response.json();
-  publicaciones.push(post);
+renderItem(post);
 }
 
  //const data =     { descripcion: txtDescripcion.value,
@@ -350,3 +331,22 @@ renderItems(publicaciones);
 }
 
 
+let imageUrl;
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'dfodg322v', 
+  uploadPreset: 'ubdqamv7'}, (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      console.log('Done! Here is the image info: ', result.info); 
+      imageUrl = result.info.secure_url;
+      tmpimagen.src = imageUrl;
+    }
+  }
+)
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+
+  
+  function renderItem(item) {
+    itemsContainer.insertAdjacentHTML("afterbegin", chooseRender(item));
+}
