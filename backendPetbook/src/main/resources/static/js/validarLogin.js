@@ -1,4 +1,4 @@
-const URL = "https://petbook-backend-production.up.railway.app/api/login/";
+const URL = "https://petbook-generation.up.railway.app/api/login/";
 let usuario;
 let inputpassword = document.getElementById("input_password");
 let inputcorreo= document.getElementById("input_nombre");

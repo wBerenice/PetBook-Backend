@@ -160,7 +160,7 @@ btnTengoCuenta.addEventListener("click", () => {
 //fecht:post
 async function realizarFetchDePost(name, telefono, correo, contrasena, especie) {
 	
-  const response = await fetch("https://petbook-backend-production.up.railway.app/api/usuarios/", {
+  const response = await fetch("https://petbook-generation.up.railway.app/api/usuarios/", {
     method: "POST",
     headers: {
      "Content-Type": "application/json"
