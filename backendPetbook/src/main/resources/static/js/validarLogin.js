@@ -1,6 +1,6 @@
-const URL = "";
-const API = "";
-let usuario = {};
+const URL = "http:localhost:8080";
+const API = "/api/login/";
+let usuario;
 let inputpassword = document.querySelector("input-password").value
 let inputcorreo= document.querySelector("input-nombre").value
 const button = document.getElementById('btnRegistro');
@@ -16,16 +16,26 @@ function renderAlert(message) {
     divEl.innerHTML = markup;
 }
 
-const Prueba = async function (URL){
-    const response = await fetch (URL);
-    const data = response.json;
-    data.contrasena= usuario.contrasena;
-    data.email= usuario.email;
-
+const Prueba = async function (URL, API){
+    const response = await fetch ((URL+API),
+    {
+    method: "POST",
+    headers: {
+     "Content-Type": "application/json"
+    },
+    body: {
+		"correo": "gama@gmail.com",
+		"contrasena": "gama1234"
+	}
+  }
+    );
+    const data = response.json();
+    usuario=data;
+    
 }
 
 const validarLogin = function (usuario){
-    if (usuario.email == inputcorreo && usuario.contrasena == inputcorreo) {
+    if (usuario) {
         return true;
     }else{
         renderAlert("El correo o la contraseña son incorrectos");
@@ -35,6 +45,7 @@ const validarLogin = function (usuario){
 }
 
 button.addEventListener('click', function() {
-    Prueba(URL).then(validarLogin(usuario));
+     Prueba(URL,API);
+     console.log(usuario);
          
   });
