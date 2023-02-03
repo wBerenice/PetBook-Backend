@@ -145,9 +145,6 @@ function addItem( urlImg, name, description) {
   }
 }
 
-function setLocal(arr) {
-  window.localStorage.setItem("publicaciones", JSON.stringify(arr));
-}
 
 function renderItems(items) {
   console.log("prueba")
@@ -170,21 +167,18 @@ function chooseRender(item) {
       </span>
         <h4 class="card-title text-center">${item.titulo}</h4>
         <p class="card-text " id = "descripcionTexto">${item.descripcion}</p>
-        <p class="card-text " id = "usuario"> publicado por: <b>${usuario}</b><p>
 
       </div>
     </div>
     </div>
     <script  src="/js/Dospublicaciones.js"> </script>
     `;
-    itemId++;
   const markupText = `
   <div class="row justify-content-center">
     <div class="card card-text" >
       <div class="card-body">
         <h5 class="card-title text-center">${item.titulo}</h5>
         <p class="card-text " id ="descripcionTexto">${item.descripcion}</p>
-        <p class="card-text " id = "usuario"> publicado por: <b>${usuario}</b><p>
       </div>
     </div>
     </div>
@@ -194,11 +188,6 @@ function chooseRender(item) {
   
 }
 
-function obtenerLocalStorage() {
-  let publicacion = localStorage.getItem("publicaciones");
-  if (!publicacion) return;
-  publicaciones = JSON.parse(publicacion);
-}
 
 window.addEventListener("load", () => {
   // obtenerLocalStorage();
@@ -227,13 +216,6 @@ btnCerrar.addEventListener("click", function (event) {
 //   cant1++;
 //   event.stopPropagation();
 //  })); 
-
-const mascota = localStorage.getItem("usuarios");
-let nombreMascota = JSON.parse(mascota);
-let usuario = nombreMascota[0].usuario
-console.log(usuario)
-
-
 
 const btnsLike = document.querySelectorAll('.btn-like');
 
