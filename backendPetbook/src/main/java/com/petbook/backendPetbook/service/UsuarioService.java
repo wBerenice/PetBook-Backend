@@ -1,6 +1,7 @@
 package com.petbook.backendPetbook.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,17 @@ public class UsuarioService {
      	return tmp;
      	
      }//updateProducto
+     
+     public boolean validarUsuario(Usuarios usuario) {
+    	 Optional<Usuarios> userByEmail =  usuarioRepository.findByeEmail(usuario.getCorreo());
+    	 if(userByEmail.isPresent()) {
+    		 Usuarios u = userByEmail.get();
+    		 if(u.getContrasena().equals(usuario.getContrasena())) {
+    			 return true;
+    		 }
+    	 }
+    	 return false;
+     }
     	 
      
 
