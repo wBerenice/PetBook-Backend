@@ -23,10 +23,10 @@ let idTimeout;
 
 //REGEX nombre
 //Este REGEX ya incluye el mínimo de caracteres 2 y el máximo es indeterminado
-let nombreRegex = /^[a-zA-Z0-9A-ZÁÉÍÓÚ a-zñáéíóú(?¿:.*[@$¡!^\-_)]{2,}$/;
+let nombreRegex = /^[a-zA-Z0-9A-ZÁÉÍÓÚ a-zñáéíóú(?¿:.*,[@$¡!^\-_)]{2,}$/;
 
 //Este REGEX ya incluye el mínimo de caracteres 10 y el máximo es indeterminado
-let descriptionRegex = /^[a-zA-Z0-9A-ZÁÉÍÓÚ a-zñáéíóú(?¿:.*[@$¡!^\-_)]{10,}$/; //No acepta corchetes []
+let descriptionRegex = /^[a-zA-Z0-9A-ZÁÉÍÓÚ a-zñáéíóú(?¿:.*,[@$¡!^\-_)]{10,}$/; //No acepta corchetes []
 
 
 const tmpimagen = document.getElementById("tmpimagen");
@@ -41,7 +41,7 @@ function validarNombre() {
   if (txtNombre.value.match(nombreRegex) == null) {
     txtNombre.style.border = "solid red 5px";
     alertaValidaciones.style.display = "block";
-    alertaValidaciones.innerHTML += `<li>El nombre debe contener más de dos carácteres</li>`;
+    alertaValidaciones.innerHTML += `<li>El título debe contener más de dos caracteres</li>`;
   } else {
     txtNombre.style.border = "solid green 5px";
     validos++;
@@ -55,13 +55,13 @@ function validarDescripcion() {
 
   if (txtDescripcion.value.length === 0) {
     alertaValidaciones.style.display = "block";
-    alertaValidaciones.innerHTML += `<li>El mensaje no puede estar vacio</li>`;
+    alertaValidaciones.innerHTML += `<li>El mensaje no puede estar vacío</li>`;
     txtDescripcion.style.border = "solid red 5px";
   }
 
   if (txtDescripcion.value.match(descriptionRegex) == null) {
     alertaValidaciones.style.display = "block";
-    alertaValidaciones.innerHTML += `<li>El mensaje debe contener 10 carácteres como mínimo</li>`;
+    alertaValidaciones.innerHTML += `<li>El mensaje debe contener 10 caracteres como mínimo</li>`;
     txtDescripcion.style.border = "solid red 5px";
   } else {
     txtDescripcion.style.border = "solid green 5px";
