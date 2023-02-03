@@ -3,7 +3,7 @@ const inputs = document.querySelectorAll("#formularioIndex input");
 const btnRegistro = document.getElementById("btnRegistro");
 const modalSuccess = document.querySelector(".modal-success");
 const SEG_TO_LOGIN = 3;
-
+console.log(inputs);
 // let usuarios = [];
 let usuariosArr = [];
 
@@ -103,11 +103,8 @@ btnRegistro.addEventListener("click", function (event) {
   const telefono = document.getElementById("input_telefono").value;
   const email = document.getElementById("input_email").value;
   const password = document.getElementById("input_password").value;
-
+  realizarFetchDePost(nombre, telefono, email, password)
   //SetDatos - INICIA
-  addItem(nombre, telefono, email, password);
-  setLocal(usuariosArr);
-  console.log(usuariosArr);
   modalSuccess.showModal();
 
   delayLogin(SEG_TO_LOGIN);
@@ -123,13 +120,14 @@ function delayLogin(segs) {
 }
 
 function addItem(name, telephone, email, password) {
-  usuariosArr.push({
+  return{
     usuario: name,
-    telephone: telephone,
-    email: email,
-    password: password,
-    loggedIn: false,
-  });
+    telefono: telephone,
+    correo: email,
+    contrasena: password,
+    
+    
+  };
 }
 
 function setLocal(arr) {
@@ -157,22 +155,18 @@ let btnTengoCuenta = document.getElementById("btnTengoCuenta");
 btnTengoCuenta.addEventListener("click", () => {
   window.location.href = "login.html";
 });
-
 //fecht:post
-async function realizarFetchDePost() {
-  const data = {
-	 datos:inputs.value
-    
-  };
-  const response = await fetch("http://localhost:8080/api/index/", {
+async function realizarFetchDePost(name, telefono, correo, contrasena) {
+	
+  const response = await fetch("http://localhost:8080/api/usuarios/", {
     method: "POST",
     headers: {
      "Content-Type": "application/json"
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(addItem(name, telefono, correo, contrasena))
   });
 
   const post = await response.json();
-  index.push(post);
+ 
 }
 
