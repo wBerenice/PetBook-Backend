@@ -1,9 +1,10 @@
-const URL = "http:localhost:8080";
-const API = "/api/login/";
+const URL = "http://localhost:8080/api/login/";
 let usuario;
-let inputpassword = document.querySelector("input-password").value
-let inputcorreo= document.querySelector("input-nombre").value
+let inputpassword = document.getElementById("input_password");
+let inputcorreo= document.getElementById("input_nombre");
 const button = document.getElementById('btnRegistro');
+
+const divEl = document.querySelector(".alerts");
 
 function renderAlert(message) {
     const markup = `
@@ -16,36 +17,41 @@ function renderAlert(message) {
     divEl.innerHTML = markup;
 }
 
-const Prueba = async function (URL, API){
-    const response = await fetch ((URL+API),
+const postUsuarios = async function (URL, correo, contrasena){
+    const response = await fetch (URL,
     {
     method: "POST",
     headers: {
      "Content-Type": "application/json"
     },
-    body: {
-		"correo": "gama@gmail.com",
-		"contrasena": "gama1234"
-	}
+    body: JSON.stringify({
+		"correo": correo,
+		"contrasena": contrasena
+	})
   }
     );
-    const data = response.json();
-    usuario=data;
+    const data = await response.json();
+    console.log(data);
+    validarLogin(data);
     
 }
 
 const validarLogin = function (usuario){
-    if (usuario) {
-        return true;
-    }else{
+    if (!usuario) {
         renderAlert("El correo o la contraseña son incorrectos");
-        return false;
+        return;
+    }else{
+        window.location.href = "Publicaciones.html";
         
     }
+    
 }
 
 button.addEventListener('click', function() {
-     Prueba(URL,API);
-     console.log(usuario);
+	if(!inputcorreo.value)return;
+	if(!inputpassword.value)return;
+
+     postUsuarios(URL, inputcorreo.value, inputpassword.value);
+		 
          
   });
