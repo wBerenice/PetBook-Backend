@@ -2,6 +2,7 @@ const formulario = document.getElementById("formularioIndex");
 const inputs = document.querySelectorAll("#formularioIndex input");
 const btnRegistro = document.getElementById("btnRegistro");
 const modalSuccess = document.querySelector(".modal-success");
+
 const SEG_TO_LOGIN = 3;
 console.log(inputs);
 // let usuarios = [];
@@ -103,12 +104,13 @@ btnRegistro.addEventListener("click", function (event) {
   const telefono = document.getElementById("input_telefono").value;
   const email = document.getElementById("input_email").value;
   const password = document.getElementById("input_password").value;
-  realizarFetchDePost(nombre, telefono, email, password)
+  const especie = document.getElementById("especie").value;
+  realizarFetchDePost(nombre, telefono, email, password, especie)
   //SetDatos - INICIA
   modalSuccess.showModal();
 
   delayLogin(SEG_TO_LOGIN);
-  realizarFetchDePost();
+ // realizarFetchDePost();
 }); //Event.Listener.btnRegistro - TERMINA
 
 //FUNCIONES LOCALSTORAGE
@@ -119,13 +121,13 @@ function delayLogin(segs) {
   }, segs * 1000);
 }
 
-function addItem(name, telephone, email, password) {
+function addItem(name, telephone, email, password, especie) {
   return{
     usuario: name,
     telefono: telephone,
     correo: email,
     contrasena: password,
-    
+    especie: especie
     
   };
 }
@@ -156,14 +158,22 @@ btnTengoCuenta.addEventListener("click", () => {
   window.location.href = "login.html";
 });
 //fecht:post
-async function realizarFetchDePost(name, telefono, correo, contrasena) {
+async function realizarFetchDePost(name, telefono, correo, contrasena, especie) {
 	
   const response = await fetch("http://localhost:8080/api/usuarios/", {
     method: "POST",
     headers: {
      "Content-Type": "application/json"
     },
-    body: JSON.stringify(addItem(name, telefono, correo, contrasena))
+    body: JSON.stringify({
+        "nombre": name,
+        "correo": correo,
+        "especie": especie,
+        "telefono": telefono,
+        "contrasena": contrasena
+
+    })
+
   });
 
   const post = await response.json();

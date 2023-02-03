@@ -19,7 +19,7 @@ public class Usuarios {
 	private String nombre;
 	@Column (nullable =false)
 	private String correo;
-	@Column (nullable =false)
+	@Column (nullable =true)
 	private String especie;
 	@Column (nullable =false)
 	private Long telefono;
