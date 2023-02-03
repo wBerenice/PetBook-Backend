@@ -275,7 +275,7 @@ async function realizarFetchDePost() {
     titulo: txtNombre.value,
     foto: imageUrl
   };
-  const response = await fetch("http://localhost:8080/api/publicaciones/", {
+  const response = await fetch("https://petbook-backend-production.up.railway.app/api/publicaciones/", {
     method: "POST",
     headers: {
      "Content-Type": "application/json"
@@ -311,7 +311,7 @@ renderItem(post);
  //FETCH para GET publicaciones y renderizar en la página
 
 async function realizarFetchDeGet() {
-  const response = await fetch("http://localhost:8080/api/publicaciones/",{
+  const response = await fetch("https://petbook-backend-production.up.railway.app/api/publicaciones/",{
     
       method: "GET",
       headers: {
