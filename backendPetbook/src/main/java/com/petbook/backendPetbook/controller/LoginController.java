@@ -12,16 +12,15 @@ import com.petbook.backendPetbook.service.UsuarioService;
 @RestController
 @RequestMapping(path="/api/login/")
 public class LoginController {
-	private final UsuarioService service;
+	private final UsuarioService usuarioService;
 	@Autowired
-	public LoginController(UsuarioService service) {
-		super();
-		this.service = service;
+	public LoginController(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
 	}//constructor
 	
 	@PostMapping
 	public boolean validarUsuario(@RequestBody Usuarios usuario) {
-		return service.validarUsuario(usuario);
+		return usuarioService.validarUsuario(usuario);
 	}
 	
 }

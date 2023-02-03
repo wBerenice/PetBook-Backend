@@ -56,7 +56,7 @@ public class UsuarioService {
      }//updateProducto
      
      public boolean validarUsuario(Usuarios usuario) {
-    	 Optional<Usuarios> userByEmail =  usuarioRepository.findByeEmail(usuario.getCorreo());
+    	 Optional<Usuarios> userByEmail =  usuarioRepository.findByCorreo(usuario.getCorreo());
     	 if(userByEmail.isPresent()) {
     		 Usuarios u = userByEmail.get();
     		 if(u.getContrasena().equals(usuario.getContrasena())) {
