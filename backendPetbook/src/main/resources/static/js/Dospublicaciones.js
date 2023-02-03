@@ -11,6 +11,8 @@ let txtDescripcion = document.getElementById("txtDescripcion");
 let btnCerrar = document.getElementById("btnCerrarSesion");
 //let inputImg = document.getElementById("inputImg");
 let base64Img = "";
+let imageUrl;
+
 let alertaValidaciones = document.getElementById("alertaValidaciones");
 let alertaValidacionesTexto = document.getElementById(
   "alertaValidacionesTexto"
@@ -208,19 +210,6 @@ window.addEventListener("load", () => {
 
 //borrar los datos de inicio de sesion al momento de cerrarla
 btnCerrar.addEventListener("click", function (event) {
-  event.preventDefault();
-  const usuarios = JSON.parse(localStorage.getItem("usuarios"));
-  if (!usuarios) {
-    window.location.href = "login.html";
-    return;
-  }
-
-  const logueado = usuarios.filter((usuario) => usuario.loggedIn == true);
-  logueado[0].loggedIn = false;
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-  //obtenerLocalStorage();
-  //localStorage.setItem("usuarios", JSON.stringify(x));
 
   window.location.href = "login.html";
 });
@@ -273,7 +262,7 @@ async function realizarFetchDePost() {
   const data = {
 	  descripcion: txtDescripcion.value,
     titulo: txtNombre.value,
-    foto: imageUrl
+    foto: !imageUrl ? "" : imageUrl
   };
   const response = await fetch("https://petbook-generation.up.railway.app/api/publicaciones/", {
     method: "POST",
@@ -331,7 +320,6 @@ renderItems(publicaciones);
 }
 
 
-let imageUrl;
 var myWidget = cloudinary.createUploadWidget({
   cloudName: 'dfodg322v', 
   uploadPreset: 'ubdqamv7'}, (error, result) => { 
