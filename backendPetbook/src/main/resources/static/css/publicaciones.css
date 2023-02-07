@@ -73,3 +73,14 @@ transform: translateY(-3%);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
+#upload_widget{
+  background-image:url('/images/Subefoto.jpg');
+  background-repeat:no-repeat;
+  height:100px;
+  width:100px;
+  background-size: 100px 100px;
+  background-position:center;
+  border: 0ch;
+  border-radius: 100%;
+  
+}
