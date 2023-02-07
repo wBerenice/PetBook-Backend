@@ -9,7 +9,8 @@ console.log(inputs);
 let usuariosArr = [];
 
 const expresiones = {
-  nombreRegex: /^[a-zA-Z-0-9 ]{2,}$/,
+  nombreRegex: /^[a-zA-Z-0-9A-ZÁÉÍÓÚ a-zñáéíóú ]{2,}$/,
+
   // passwordRegex: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$,
   passwordRegex: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&:;<>,.?/~_+-=|]).{8,16}$/,
 
