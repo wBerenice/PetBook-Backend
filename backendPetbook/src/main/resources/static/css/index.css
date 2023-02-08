@@ -2,7 +2,29 @@
 /* font Nunito aplicada a todo la página index.html */
 body{
     font-family: var(--font-nunito);
+    min-height: 100vh;
+    justify-content: center;
 }
+
+video{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -3;
+}
+.containervideo
+{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    
+}
+
 
 /*estilo párrafo "Donde tu mascota es la protagonista*/
 p{ 
@@ -175,13 +197,3 @@ p{
     text-align: center;
 }
 
-.videofondo
-{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -3;
-    
-}
